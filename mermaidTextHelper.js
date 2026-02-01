@@ -6,6 +6,10 @@ function mermaidTextGenerator(jsonObject){
     let genricObject = jsonGenericGenerator(jsonObject);
     textLines.push(`T[${genricObject.title}]`);
     genricObject.nodes.forEach(node=>{
+        node.text = node.text.replace(/\(\s*\)|\[\s*\]/g, "").replace(/\(\s*([^)]*?)\s*\)|\[\s*([^\]]*?)\s*\]/g, (_, p1, p2) => {
+            const content = p1 ?? p2;
+            return content ? ` of ${content}` : "";
+        });
         if(node.type === 'roundEdge'){
             let line= `${node.id}(${node.text})`;
             textLines.push(line);
