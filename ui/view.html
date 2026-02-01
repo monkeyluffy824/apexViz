@@ -1,0 +1,46 @@
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="{{UI_URI}}/view.css">
+  <link rel="stylesheet" href="{{UI_URI}}/pico.min.css">
+  <script src="{{UI_URI}}/mermaid.min.js"></script>
+  <script src="{{UI_URI}}/svg-pan-zoom.js"></script>
+  <title>Apex Tracer</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="main">
+      <div id="diagram" style="width:100%; height:auto;"></div>
+    </div>
+    <div class="side">
+      <section class="header-grid" style="align-items: center; margin-bottom: 1rem;">
+        <header class="left">
+          <hgroup>
+            <h1>Apex Viz</h1>
+            <p style="color:aquamarine;">Instantly visualize Salesforce Apec code as flow charts.</p>
+          </hgroup>
+		    </header>
+      </section>
+      <main >
+        <div id="paraText"></div>
+        <div class="dropdownCls">
+          <select name="select" aria-label="Select" required id="dropdownValues" style="width: auto;">
+            <option selected disabled value="">Select</option>
+          </select>
+          <div >
+            <button  id="startVisualizeButton" >Visualize</button>
+          </div>
+        </div>
+        <br>
+        <div id ="mermaidTextClipboard">
+            <p style="font-size: 15px;color:aquamarine;" >Click the button below to copy the Mermaid text to your clipboard for use in Mermaid-supported editors.</p>
+            <button id ="mermaidTextClipboardButton" class="outline">Copy Mermaid Text</button>
+        </div>
+        
+      </main>
+    </div>
+  </div>
+  
+  <script src="{{UI_URI}}/view.js"></script>
+</body>

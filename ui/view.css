@@ -1,0 +1,50 @@
+.container{
+    display: flex;
+    height: auto;
+    text-overflow: ellipsis;
+    color: #ffffff;
+}
+
+.main{
+    flex: 1;
+    padding: 2rem;
+    border-right: 1px solid #ddd;
+}
+
+.side{
+  width: 600px;
+  padding: 16px;
+  background-color: var(--vscode-editor-background);
+}
+
+
+body {
+      font-family: system-ui, sans-serif;
+      padding: 10px;
+      background-color: var(--vscode-editor-background);
+      color: #ffffff;
+      min-height: 1200px;
+}
+
+.header-grid {
+  display: grid;
+  grid-template-columns: 1fr; 
+}
+
+:root {
+  --background-color: var(--vscode-editor-background);
+  --color: #ffffff;
+}
+
+#startVisualizeButton{
+    display: none;
+}
+#mermaidTextClipboard{
+  display: none;
+}
+.dropdownCls{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 30px;
+}
+

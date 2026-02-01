@@ -1,0 +1,39 @@
+{
+  "name": "apexviz",
+  "displayName": "ApexViz",
+  "description": "Instantly visualize Salesforce Apex code as flow charts.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.108.1"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "apexViz.visualizeApexClass",
+        "title": "Visualize Apex Class"
+      }
+    ]
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "@types/vscode": "^1.108.1",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.39.2"
+  },
+  "dependencies": {
+    "@apexdevtools/apex-parser": "^5.0.0-beta.5",
+    "antlr4": "^4.13.2"
+  }
+}
