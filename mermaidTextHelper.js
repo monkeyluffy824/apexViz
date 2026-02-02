@@ -6,10 +6,9 @@ function mermaidTextGenerator(jsonObject){
     let genricObject = jsonGenericGenerator(jsonObject);
     textLines.push(`T[${genricObject.title}]`);
     genricObject.nodes.forEach(node=>{
-        node.text = node.text.replace(/\(\s*\)|\[\s*\]/g, "").replace(/\(\s*([^)]*?)\s*\)|\[\s*([^\]]*?)\s*\]/g, (_, p1, p2) => {
-            const content = p1 ?? p2;
-            return content ? ` of ${content}` : "";
-        });
+        if((node.text.includes('replaceAll') || node.text.includes('replaceFirst') || node.text.includes('split') || node.text.includes('(') || node.text.includes('[')) ){
+            node.text = `"${node.text}"`;
+        }
         if(node.type === 'roundEdge'){
             let line= `${node.id}(${node.text})`;
             textLines.push(line);
@@ -32,13 +31,13 @@ function mermaidTextGenerator(jsonObject){
             let line= `${node.id}{${node.text}}`;
             textLines.push(line);
         }else if(node.type === 'hexagon'){
-            let line= `${node.id}@{ shape: hex, label: "${node.text}" }`;
+            let line= `${node.id}@{ shape: hex, label: ${node.text} }`;
             textLines.push(line);
         }else if(node.type === 'database'){
-            let line= `${node.id}@{ shape: cyl, label: "${node.text}" }`;
+            let line= `${node.id}@{ shape: cyl, label: ${node.text} }`;
             textLines.push(line);
         }else if(node.type === 'stop'){
-            let line= `${node.id}@{ shape: curv-trap, label: "${node.text}" }`;
+            let line= `${node.id}@{ shape: curv-trap, label: ${node.text} }`;
             textLines.push(line);
         }else if(node.type === 'subFlowStart'){
             let line= `subgraph ${node.id} [Try]`;
