@@ -6,7 +6,7 @@ function mermaidTextGenerator(jsonObject){
     let genricObject = jsonGenericGenerator(jsonObject);
     textLines.push(`T[${genricObject.title}]`);
     genricObject.nodes.forEach(node=>{
-        if((node.text.includes('replaceAll') || node.text.includes('replaceFirst') || node.text.includes('split') || node.text.includes('(') || node.text.includes('[')) ){
+        if((node.text?.includes('replaceAll') || node.text?.includes('replaceFirst') || node.text?.includes('split') || node.text?.includes('(') || node.text?.includes('[')) ){
             node.text = `"${node.text}"`;
         }
         if(node.type === 'roundEdge'){
@@ -75,6 +75,8 @@ function jsonGenericGenerator(jsonObject){
     let parameters = jsonObject.parameters.replace(/[()]/g, "").trim().length>0 ? jsonObject.parameters.replace(/[()]/g, "").trim() : 'None';
     parameters = parameters.includes('<') ? parameters.replaceAll('<',' of ') : parameters;
     parameters = parameters.includes('>') ? parameters.replaceAll('>',' = ') : parameters;
+    parameters = parameters.includes(']') ? parameters.replaceAll(']',' ') : parameters;
+    parameters = parameters.includes('[') ? parameters.replaceAll('[',' ') : parameters;
     jsonGenericObject['title'] = `Method : <b>${jsonObject.name}</b> </br> Parameters : ${parameters}`;
     jsonGenericObject['nodes'] =[];
     jsonGenericObject['edges'] =[];
