@@ -275,7 +275,10 @@ function parseAssignmentExpressionContext(node,expressionObject){
       parseMethodExpressionNode(ele,methodSubObject);
       expressionObject['methodDetails'] = methodSubObject;
     }else if(name === 'DotExpressionContext'){
-      expressionObject['variableName'] = ele.getText();
+      if(!expressionObject['variableNameUpdated']){
+        expressionObject['variableName'] = ele.getText();
+        expressionObject['variableNameUpdated'] = true;
+      }
     }
   });
 }
