@@ -75,7 +75,7 @@ function jsonGenericGenerator(jsonObject){
     let parameters = jsonObject.parameters.replace(/[()]/g, "").trim().length>0 ? jsonObject.parameters.replace(/[()]/g, "").trim() : 'None';
     parameters = parameters.includes('<') ? parameters.replaceAll('<',' of ') : parameters;
     parameters = parameters.includes('>') ? parameters.replaceAll('>',' = ') : parameters;
-    parameters = parameters.includes(']') ? parameters.replaceAll(']',' ') : parameters;
+    parameters = parameters.includes(']') ? parameters.replaceAll(']',' Array ') : parameters;
     parameters = parameters.includes('[') ? parameters.replaceAll('[',' ') : parameters;
     jsonGenericObject['title'] = `Method : <b>${jsonObject.name}</b> </br> Parameters : ${parameters}`;
     jsonGenericObject['nodes'] =[];
