@@ -10,14 +10,19 @@ mermaid.initialize({ startOnLoad: false,theme: 'dark',securityLevel: "loose" });
             const paraTextTag = document.getElementById('paraText');
             const items = document.getElementById('dropdownValues');
             const methNames = msg.methods;
-            methNames?.forEach(element => {
-                const option= document.createElement("option");
-                option.text=element;
-                option.value =element;
-                items.appendChild(option);
-            });
             const para = document.createElement('p');
-            para.innerText  = "Apex Class Parsed Successfully, Select the method from below dropdown and click on visulaize button."
+            if(methNames.length>0){
+                methNames?.forEach(element => {
+                    const option= document.createElement("option");
+                    option.text=element;
+                    option.value =element;
+                    items.appendChild(option);
+                });
+                para.innerText  = "Apex Class Parsed Successfully, Select the method from below dropdown and click on visulaize button."
+            }else{
+                para.innerText  = "Apex Class Parsed Successfully, and it doesnt have any methods."
+            }
+            
             para.style = "font-size: 15px;color:aquamarine;";
             paraTextTag.appendChild(para);
         }
