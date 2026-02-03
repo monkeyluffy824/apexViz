@@ -14,7 +14,6 @@ function extractMethods(tree) {
     let body='';
     let modifiers=[];
     if (node.constructor.name === "MethodDeclarationContext") {
-      console.log(node);
       if(node?.parentCtx?.parentCtx?.constructor.name === 'ClassBodyDeclarationContext'){
             const anon = node.parentCtx.parentCtx.children.filter(element=> {
                 return element.constructor.name=== 'ModifierContext'
