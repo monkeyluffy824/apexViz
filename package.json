@@ -16,7 +16,12 @@
       {
         "command": "apexViz.visualizeApexClass",
         "title": "Visualize Apex Class"
+      },
+      {
+        "command": "apexViz.visualizeApexTrigger",
+        "title": "Visualize Apex Trigger"
       }
+      
     ]
   },
   "scripts": {
