@@ -348,7 +348,12 @@ function prepareVariableDeclarationLine(body,jsonGenericObject){
     let node={};
     node['id'] = `${jsonGenericObject.idName}`+ jsonGenericObject.totalNodes;
     if(body.isSOQL){
-        node['text'] = `SOQL Query on ${body.refType} is executed and assigned to ${body.variableName}`;
+        if(body.refType?.includes('List')){
+            let obj = body.refType?.split('<')[1].split('>')[0];
+            node['text'] = `SOQL Query on ${obj} is executed and assigned to ${body.variableName}`;
+        }else{
+            node['text'] = `SOQL Query on ${body.refType} is executed and assigned to ${body.variableName}`;
+        }
         node['type'] = 'subroutine';
     }else if(body.isMethodcallout){
         node['text'] = `'${body.variableName}' is created with the result of ${body.methodDetails?.name}.`;
