@@ -17,17 +17,22 @@ function activate(context) {
 
 	const disposable = vscode.commands.registerCommand('apexViz.visualizeApexClass', function () {
 		// The code you place here will be executed every time your command is executed
-        const editor = vscode.window.activeTextEditor;
-        if(editor){
-            const content = editor.document.getText();
-            const fileName = editor.document.uri.path.split('/').pop();
-            if(fileName && fileName?.endsWith('.cls')){
-                visualize(content,context);
-                vscode.window.showInformationMessage('Hello from ApexViz!');
-            }else{
-                vscode.window.showInformationMessage('Run this command after opening the apex class!');
+        try{
+            const editor = vscode.window.activeTextEditor;
+            if(editor){
+                const content = editor.document.getText();
+                const fileName = editor.document.uri.path.split('/').pop();
+                if(fileName && fileName?.endsWith('.cls')){
+                    visualize(content,context);
+                    vscode.window.showInformationMessage('Hello from ApexViz!');
+                }else{
+                    vscode.window.showInformationMessage('Run this command after opening the apex class!');
+                }
             }
+        }catch(err){
+            console.log('error occured',err);
         }
+        
 	});
 
     const disposable2 = vscode.commands.registerCommand('apexViz.visualizeApexTrigger', function () {

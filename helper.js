@@ -197,6 +197,9 @@ function parseReturnlogic(node,returnObject){
          returnObject['returnValue'] = node.children[i].getText();
       }
       parsePrimaryExpressionContext(node.children[i],returnObject);
+      if(returnObject.isSOQL){
+        returnObject['returnValue'] = `result of SOQL on ${returnObject.fromObject}.`;
+      }
     }else if(name === 'DotExpressionContext'){
         returnObject['returnValue'] = node.children[i].getText();
     }else if(name === 'CastExpressionContext'){
