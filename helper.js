@@ -14,6 +14,7 @@ function extractMethods(tree) {
     let body='';
     let modifiers=[];
     if (node.constructor.name === "MethodDeclarationContext") {
+      console.log(node);
       if(node?.parentCtx?.parentCtx?.constructor.name === 'ClassBodyDeclarationContext'){
             const anon = node.parentCtx.parentCtx.children.filter(element=> {
                 return element.constructor.name=== 'ModifierContext'
@@ -193,6 +194,9 @@ function parseReturnlogic(node,returnObject){
       if(node.children[i]?.children[0]?.constructor.name === 'IdPrimaryContext'){
          returnObject['returnValue'] = node.children[i].getText();
       }
+      if(node.children[i]?.children[0]?.constructor.name === 'LiteralPrimaryContext'){
+         returnObject['returnValue'] = node.children[i].getText();
+      }
       parsePrimaryExpressionContext(node.children[i],returnObject);
     }else if(name === 'DotExpressionContext'){
         returnObject['returnValue'] = node.children[i].getText();
@@ -201,6 +205,8 @@ function parseReturnlogic(node,returnObject){
     }else if(name === 'Arth2ExpressionContext'){
       returnObject['returnValue'] = 'Arth Expression';
     }else if(name === 'MethodCallExpressionContext'){
+      returnObject['returnValue'] = node.children[i].getText();
+    }else if(name === 'PreOpExpressionContext'){
       returnObject['returnValue'] = node.children[i].getText();
     }
   }
