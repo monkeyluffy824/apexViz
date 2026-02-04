@@ -35,22 +35,7 @@ function activate(context) {
         
 	});
 
-    const disposable2 = vscode.commands.registerCommand('apexViz.visualizeApexTrigger', function () {
-		// The code you place here will be executed every time your command is executed
-        const editor = vscode.window.activeTextEditor;
-        if(editor){
-            const content = editor.document.getText();
-            const fileName = editor.document.uri.path.split('/').pop();
-            if(fileName && fileName?.endsWith('.trigger')){
-                visualize(content,context);
-                vscode.window.showInformationMessage('Hello from ApexViz!');
-            }else{
-                vscode.window.showInformationMessage('Run this command after opening the apex Trigger!');
-            }
-        }
-	});
-
-	context.subscriptions.push(disposable,disposable2);
+	context.subscriptions.push(disposable);
 }
 function visualize(apexClassString,context){
 	const input = new praser.CaseInsensitiveInputStream(apexClassString);
