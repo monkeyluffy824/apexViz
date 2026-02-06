@@ -60,6 +60,9 @@ function mermaidTextGenerator(jsonObject){
         }else if(node.type === 'continue'){
                let line=   `${node.id}@{ shape: lin-rect, label: ${node.text} }`;
                textLines.push(line);
+        }else if(node.type === 'break'){
+               let line=   `${node.id}@{ shape: cross-circ, label: ${node.text} }`;
+               textLines.push(line);
         }
 
         
@@ -120,6 +123,25 @@ function parseJsonBody(body,jsonGenericObject){
         jsonGenericObject['totalNodes'] = jsonGenericObject.totalNodes+1;
     }else if(body.type === 'Continue Statement'){
         let result=prepareContinueStamentLine(body,jsonGenericObject);
+        jsonGenericObject.previousExitPoints?.forEach(ele=>{
+            let edge ={};
+            if(typeof ele === 'string'){
+                edge['from'] = ele;
+                edge['to'] = result.entryNode;
+                jsonGenericObject.edges.push(edge);
+            }else if(ele){
+                edge['from'] = ele.id;
+                edge['label'] = ele.label;
+                edge['to'] = result.entryNode;
+                jsonGenericObject.edges.push(edge);
+            }
+            
+        });
+        jsonGenericObject.nodes.push(result.node);
+        jsonGenericObject.previousExitPoints = result.exitNodes;
+        jsonGenericObject['totalNodes'] = jsonGenericObject.totalNodes+1;
+    }else if(body.type === 'Break Statement'){
+        let result=prepareBreakStamentLine(body,jsonGenericObject);
         jsonGenericObject.previousExitPoints?.forEach(ele=>{
             let edge ={};
             if(typeof ele === 'string'){
@@ -395,6 +417,15 @@ function prepareContinueStamentLine(body,jsonGenericObject){
     node['id'] = `${jsonGenericObject.idName}`+ jsonGenericObject.totalNodes;
     node['text'] = body['text'];
     node['type'] = 'continue';
+    let exitNodesId =[];
+    return {'node':node,'exitNodes':exitNodesId, 'entryNode':node.id};
+}
+
+function prepareBreakStamentLine(body,jsonGenericObject){
+    let node ={};
+    node['id'] = `${jsonGenericObject.idName}`+ jsonGenericObject.totalNodes;
+    node['text'] = body['text'];
+    node['type'] = 'break';
     let exitNodesId =[];
     return {'node':node,'exitNodes':exitNodesId, 'entryNode':node.id};
 }

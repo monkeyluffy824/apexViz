@@ -82,6 +82,11 @@ function parseBodyLine(node,statements){
         continueObj['type'] = 'Continue Statement';
         parseContinueStatement(node,continueObj);
         statements.push(continueObj);
+    }else if(childName === 'Fe' && node?.getText() === 'break'){
+        let breakObj={};
+        breakObj['type'] = 'Break Statement';
+        parseBreakStatement(node,breakObj);
+        statements.push(breakObj);
     }
 }
 
@@ -146,6 +151,11 @@ function parseStatementContext(node,stementsLinesObjects){
 
 function parseContinueStatement(node,continueObj){
     continueObj['text'] = 'Continue to Next Iteration';
+
+}
+
+function parseBreakStatement(node,breakObj){
+    breakObj['text'] = 'Breaking Iteration';
 
 }
 
