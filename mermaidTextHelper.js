@@ -57,6 +57,9 @@ function mermaidTextGenerator(jsonObject){
             let line2 =`style ${node.id} stroke:#f66,stroke-width:2px,color:#fff,stroke-dasharray: 5 5`;
             textLines.push(line);
             textLines.push(line2);
+        }else if(node.type === 'continue'){
+               let line=   `${node.id}@{ shape: lin-rect, label: ${node.text} }`;
+               textLines.push(line);
         }
 
         
@@ -98,6 +101,25 @@ function jsonGenericGenerator(jsonObject){
 function parseJsonBody(body,jsonGenericObject){
     if(body.type === 'variable decleration'){
         let result=prepareVariableDeclarationLine(body,jsonGenericObject);
+        jsonGenericObject.previousExitPoints?.forEach(ele=>{
+            let edge ={};
+            if(typeof ele === 'string'){
+                edge['from'] = ele;
+                edge['to'] = result.entryNode;
+                jsonGenericObject.edges.push(edge);
+            }else if(ele){
+                edge['from'] = ele.id;
+                edge['label'] = ele.label;
+                edge['to'] = result.entryNode;
+                jsonGenericObject.edges.push(edge);
+            }
+            
+        });
+        jsonGenericObject.nodes.push(result.node);
+        jsonGenericObject.previousExitPoints = result.exitNodes;
+        jsonGenericObject['totalNodes'] = jsonGenericObject.totalNodes+1;
+    }else if(body.type === 'Continue Statement'){
+        let result=prepareContinueStamentLine(body,jsonGenericObject);
         jsonGenericObject.previousExitPoints?.forEach(ele=>{
             let edge ={};
             if(typeof ele === 'string'){
@@ -365,6 +387,15 @@ function prepareVariableDeclarationLine(body,jsonGenericObject){
 
     let exitNodesId =[];
     exitNodesId.push(node.id);
+    return {'node':node,'exitNodes':exitNodesId, 'entryNode':node.id};
+}
+
+function prepareContinueStamentLine(body,jsonGenericObject){
+    let node ={};
+    node['id'] = `${jsonGenericObject.idName}`+ jsonGenericObject.totalNodes;
+    node['text'] = body['text'];
+    node['type'] = 'continue';
+    let exitNodesId =[];
     return {'node':node,'exitNodes':exitNodesId, 'entryNode':node.id};
 }
 

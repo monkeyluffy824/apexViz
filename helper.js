@@ -77,6 +77,11 @@ function parseBodyLine(node,statements){
        node?.children?.forEach(nod=>{ 
         parseStatementContext(nod,statements);
        });
+    }else if(childName === 'Fe' && node?.getText() === 'continue'){
+        let continueObj={};
+        continueObj['type'] = 'Continue Statement';
+        parseContinueStatement(node,continueObj);
+        statements.push(continueObj);
     }
 }
 
@@ -136,6 +141,11 @@ function parseStatementContext(node,stementsLinesObjects){
         stementsLinesObjects.push(throwObject);
     }
     return stementsLinesObjects;
+
+}
+
+function parseContinueStatement(node,continueObj){
+    continueObj['text'] = 'Continue to Next Iteration';
 
 }
 
