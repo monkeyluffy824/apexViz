@@ -9,6 +9,7 @@ function mermaidTextGenerator(jsonObject){
         if((node.text?.includes('replaceAll') || node.text?.includes('replaceFirst') || node.text?.includes('split') || node.text?.includes('(') || node.text?.includes('[')) ){
             node.text = `"${node.text}"`;
         }
+        node.text = node.text?.includes(':') ? node.text?.replaceAll(':',' of '):node.text;
         if(node.type === 'roundEdge'){
             let line= `${node.id}(${node.text})`;
             textLines.push(line);

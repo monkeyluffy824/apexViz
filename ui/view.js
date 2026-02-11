@@ -3,7 +3,7 @@ let selectedMethodName ='';
 let mermaidText='';
 const vscode = acquireVsCodeApi();
 
-mermaid.initialize({ startOnLoad: false,theme: 'dark',securityLevel: "loose" });
+mermaid.initialize({ startOnLoad: false,theme: 'dark',securityLevel: "loose", flowchart: {htmlLabels: true} });
     window.addEventListener('message', event => {
         const msg = event.data;
         if(msg.command === 'methodNames'){
