@@ -230,6 +230,8 @@ function parseReturnlogic(node,returnObject){
       returnObject['returnValue'] = node.children[i].getText();
     }else if(name === 'PreOpExpressionContext'){
       returnObject['returnValue'] = node.children[i].getText();
+    }else if(name === 'NewExpressionContext'){
+       returnObject['returnValue'] = node.children[i].getText();
     }
   }
 }
