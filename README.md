@@ -24,7 +24,8 @@ It detect and visualizes the following:
 3. Similar visual structure to Salesforce Flows.
 
 **Installation**
-Marketplace URL: https://marketplace.visualstudio.com/items?itemName=PanangipalliSaiCharan.apexviz
+
+ Marketplace URL: https://marketplace.visualstudio.com/items?itemName=PanangipalliSaiCharan.apexviz
 
 **Vs Code Commands**
 
