@@ -3,6 +3,7 @@
   "displayName": "ApexViz",
   "description": "Instantly visualize Salesforce Apex code as flow charts.",
   "version": "0.0.1",
+  "publisher": "PanangipalliSaiCharan",
   "engines": {
     "vscode": "^1.108.1"
   },
@@ -10,6 +11,8 @@
     "Other"
   ],
   "activationEvents": [],
+  "icon": "Images/apexVizImage.jpg",
+  "license": "MIT",
   "main": "./extension.js",
   "contributes": {
     "commands": [
