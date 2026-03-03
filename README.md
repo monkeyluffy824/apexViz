@@ -1,6 +1,6 @@
 **Apex Viz (MVP)**
 
-Apex Flowchart Generator is an offline VS Code extension visual Aid tool that converts Apex code into structured, flowchart-style diagrams similar to Salesforce Flows.
+ApexViz is an offline VS Code extension visual Aid tool that converts Apex code into structured, flowchart-style diagrams similar to Salesforce Flows.
 It helps Salesforce developers, administrators, and newbies to visually understand complex Apex logic structure.
 
 **Key Features**
