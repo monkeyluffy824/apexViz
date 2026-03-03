@@ -15,7 +15,7 @@
     "commands": [
       {
         "command": "apexViz.visualizeApexClass",
-        "title": "Visualize Apex Class"
+        "title": "ApexViz: Visualize Apex Class"
       }
       
     ]
