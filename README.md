@@ -43,6 +43,12 @@ It detect and visualizes the following:
 5. Ternary operator Short-hand if else is not being visualized.
 6. Complex dynamic Apex may require future enhancements.
 
+**Privacy**
+
+1. Completely Offline.
+2. No External API Calls.
+3. Your Code never leaves your machine.
+
 **Architecture**
 
 Apex Class Code -> Apex ANTLR4 Praser -> AST and Code Structure Extraction -> Mermaid Flow Chart Synatx Generation -> VS Code Webview Rendering.
