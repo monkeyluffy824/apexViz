@@ -23,6 +23,9 @@ It detect and visualizes the following:
 2. Renders diagrams directly inside VS Code.
 3. Similar visual structure to Salesforce Flows.
 
+**Installation**
+Marketplace URL: https://marketplace.visualstudio.com/items?itemName=PanangipalliSaiCharan.apexviz
+
 **Vs Code Commands**
 
 `ApexViz: Visualize Apex Class` - Helps to visualize Apex Class, Extracts All the methods and Visualize these methods individually.
