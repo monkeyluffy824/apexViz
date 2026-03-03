@@ -43,6 +43,7 @@ It detect and visualizes the following:
 5. Ternary operator(Short-hand if else) is not being visualized.
 6. Constructors are skipped.
 7. Complex dynamic Apex may require future enhancements.
+8. Long text in the rendered Mermaid diagram may be truncated. As a temporary workaround, copy the generated Mermaid code and view it in any Mermaid-supported tool.
 
 **Privacy**
 
