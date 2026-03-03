@@ -1,7 +1,7 @@
 {
   "name": "apexviz",
   "displayName": "ApexViz",
-  "description": "Instantly visualize Salesforce Apex code as flow charts.",
+  "description": "Apex Flowchart Generator is an offline VS Code extension visual Aid tool that converts Apex code into structured, flowchart-style diagrams similar to Salesforce Flows.",
   "version": "0.0.1",
   "publisher": "PanangipalliSaiCharan",
   "engines": {
@@ -39,5 +39,20 @@
   "dependencies": {
     "@apexdevtools/apex-parser": "^5.0.0-beta.5",
     "antlr4": "^4.13.2"
-  }
+  },
+  "repository": {
+  "type": "git",
+  "url": "https://github.com/monkeyluffy824/apexViz"
+},
+"homepage": "https://github.com/monkeyluffy824/apexViz",
+"bugs": {
+  "url": "https://github.com/monkeyluffy824/apexViz/issues"
+},
+"keywords": [
+  "apex",
+  "salesforce",
+  "flowchart",
+  "mermaid",
+  "visualization"
+]
 }
