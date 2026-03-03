@@ -41,18 +41,12 @@
     "antlr4": "^4.13.2"
   },
   "repository": {
-  "type": "git",
-  "url": "https://github.com/monkeyluffy824/apexViz"
-},
+    "type": "git",
+    "url": "https://github.com/monkeyluffy824/apexViz"
+  },
 "homepage": "https://github.com/monkeyluffy824/apexViz",
 "bugs": {
   "url": "https://github.com/monkeyluffy824/apexViz/issues"
 },
-"keywords": [
-  "apex",
-  "salesforce",
-  "flowchart",
-  "mermaid",
-  "visualization"
-]
+"keywords": ["apex","salesforce","flowchart","mermaid","visualization"]
 }
