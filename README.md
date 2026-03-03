@@ -40,8 +40,9 @@ It detect and visualizes the following:
 2. Does not evaluate runtime behavior.
 3. `Switch` `Case` logic is currently not rendered.
 4. Triggers can't be visualized.
-5. Ternary operator Short-hand if else is not being visualized.
-6. Complex dynamic Apex may require future enhancements.
+5. Ternary operator(Short-hand if else) is not being visualized.
+6. Constructors are skipped.
+7. Complex dynamic Apex may require future enhancements.
 
 **Privacy**
 
